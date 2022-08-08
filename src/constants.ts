@@ -1,3 +1,8 @@
+// TODO: Clear all of this shit and start from scratch.
+// TODO: Probably use Redux.
+
+export type CalcAction = Number | Action
+
 export type Number = {
   name: string
   value: number
@@ -6,7 +11,6 @@ export type Number = {
 export type Action = {
   name: string
   symbol: string
-  func: (num1: number, num2: number) => number
 }
 
 const NUMBERS: Number[] = [
@@ -22,18 +26,11 @@ const NUMBERS: Number[] = [
   { name: "nine", value: 9 },
 ]
 
-// TODO: Implement digit-by-digit fucntions
-const divide = (num1: number, num2: number) => {
-    if (num2 === 0) return Infinity
-    return num1 / num2
-}
-
-const multiply = (num1: number, num2: number) => num1 * num2
-
 const ACTIONS: Action[] = [
-  { name: "clear", symbol: "AC", func: (num1, num2) => 0 },
-  { name: "divide", symbol: "/", func: divide },
-  { name: "multiply", symbol: "x", func: multiply },
+  { name: "clear", symbol: "AC" },
+  { name: "divide", symbol: "/" },
+  { name: "multiply", symbol: "x" },
+  { name: "add", symbol: "+" },
 ]
 
 export { NUMBERS, ACTIONS }
