@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, Grid } from "@mui/material"
 
 type Props = {
   current: string
@@ -7,17 +7,14 @@ type Props = {
 
 const Display: React.FC<Props> = ({ current, expression }) => {
   return (
-    <Box
-      sx={{
-        m: "10%",
-        width: "90%",
-        display: "grid",
-        gridTemplateRows: "repeat(2, 1fr)",
-      }}
-    >
-      <div>{expression.join(" ")}</div>
-      <div>{current}</div>
-    </Box>
+    <Grid container direction="column" m={3} spacing={3}>
+      <Grid item>
+        <Box sx={{ fontSize: "4vh" }}>{expression.join("")}</Box>
+      </Grid>
+      <Grid item>
+        <Box sx={{ fontSize: "4vh" }}>{current}</Box>
+      </Grid>
+    </Grid>
   )
 }
 

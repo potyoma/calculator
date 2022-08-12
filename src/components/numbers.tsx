@@ -1,7 +1,7 @@
-import { Box, Button, Grid } from "@mui/material"
+import { Button, Grid } from "@mui/material"
 
 type Props = {
-  onAdd: (digit: number) => void
+  onAdd: (digit: string) => void
 }
 
 const Numbers: React.FC<Props> = ({ onAdd }) => {
@@ -11,7 +11,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="seven"
-          onClick={() => onAdd(7)}
+          onClick={() => onAdd("7")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -23,7 +23,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="eight"
-          onClick={() => onAdd(8)}
+          onClick={() => onAdd("8")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -35,7 +35,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="nine"
-          onClick={() => onAdd(9)}
+          onClick={() => onAdd("9")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -47,7 +47,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="four"
-          onClick={() => onAdd(4)}
+          onClick={() => onAdd("4")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -59,7 +59,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="five"
-          onClick={() => onAdd(5)}
+          onClick={() => onAdd("5")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -71,7 +71,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="six"
-          onClick={() => onAdd(6)}
+          onClick={() => onAdd("6")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -83,7 +83,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="one"
-          onClick={() => onAdd(1)}
+          onClick={() => onAdd("1")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -95,7 +95,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="two"
-          onClick={() => onAdd(2)}
+          onClick={() => onAdd("2")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -107,7 +107,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="three"
-          onClick={() => onAdd(3)}
+          onClick={() => onAdd("3")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -119,7 +119,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="zero"
-          onClick={() => onAdd(0)}
+          onClick={() => onAdd("0")}
           size="large"
           variant="contained"
           fullWidth={true}
@@ -130,7 +130,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
       <Grid item sm={4}>
         <Button
           color="primary"
-          id="zero"
+          id="decimal"
           onClick={() => {}}
           size="large"
           variant="contained"

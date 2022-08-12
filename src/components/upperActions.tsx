@@ -10,7 +10,7 @@ const UpperActions: React.FC<Props> = ({ onClear, onAdd }) => {
     <Grid container marginBottom={2} spacing={2} columns={{ sm: 12 }}>
       <Grid item sm={8}>
         <Button
-          color="primary"
+          color="error"
           id="clear"
           onClick={() => onClear()}
           size="large"
@@ -22,7 +22,7 @@ const UpperActions: React.FC<Props> = ({ onClear, onAdd }) => {
       </Grid>
       <Grid item sm={4}>
         <Button
-          color="primary"
+          color="info"
           id="divide"
           onClick={() => onAdd("/")}
           size="large"

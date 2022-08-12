@@ -1,19 +1,27 @@
-import { Box, Button } from "@mui/material"
+import { Grid } from "@mui/material"
 import { Container } from "@mui/system"
 import { Numbers } from "./numbers"
+import { SideActions } from "./sideActions"
 import { UpperActions } from "./upperActions"
 
 type Props = {
-  onNumberChange: (digit: number) => void
+  onDigitChange: (digit: string) => void
   onClear: () => void
-  onAddAction: (action: string) => void
+  onEqual: () => void
 }
 
-const Buttons: React.FC<Props> = ({ onNumberChange, onClear, onAddAction }) => {
+const Buttons: React.FC<Props> = ({ onDigitChange, onClear, onEqual }) => {
   return (
     <Container>
-      <UpperActions onClear={onClear} onAdd={onAddAction} />
-      <Numbers onAdd={onNumberChange} />
+      <Grid container direction="row" columns={{ md: 12 }}>
+        <Grid item md={10}>
+          <UpperActions onClear={onClear} onAdd={onDigitChange} />
+          <Numbers onAdd={onDigitChange} />
+        </Grid>
+        <Grid item md={2}>
+          <SideActions onAdd={onDigitChange} onEqual={onEqual} />
+        </Grid>
+      </Grid>
     </Container>
   )
 }
