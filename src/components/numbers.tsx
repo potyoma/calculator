@@ -131,7 +131,7 @@ const Numbers: React.FC<Props> = ({ onAdd }) => {
         <Button
           color="primary"
           id="decimal"
-          onClick={() => {}}
+          onClick={() => onAdd(".")}
           size="large"
           variant="contained"
           fullWidth={true}

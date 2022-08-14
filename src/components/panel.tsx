@@ -6,50 +6,84 @@ import { Buttons } from "./buttons"
 import { Display } from "./display"
 
 const Panel: React.FC = () => {
-  const [expression, setExpression] = useState<string[]>([])
-  const [current, setCurrent] = useState("0")
+  const defaultValue = "0"
+  const actions = ["/", "x", "+", "-"]
+
+  const [expression, setExpression] = useState([defaultValue])
+  const [evaluated, setEvaluated] = useState(false)
 
   const clear = () => {
-    setCurrent("0")
-    setExpression([])
+    setExpression([defaultValue])
+    setEvaluated(false)
   }
 
-  const handleAddDigit = (digit: number) => {
-    if (
-      expression.length > 1 &&
-      isNaN(parseFloat(expression[expression.length - 1])) &&
-      isNaN(parseFloat(current))
-    ) {
-      setCurrent(digit.toString())
-    } else setCurrent(current === "0" ? digit.toString() : current + digit)
-  }
+  const handleAddDigit = (digit: string) => {
+    const isNumber = !isNaN(parseInt(digit))
+    const copy = evaluated
+      ? [
+          actions.includes(digit)
+            ? expression.at(-1) || defaultValue
+            : defaultValue,
+        ]
+      : Array.from(expression)
+    const currentValue = copy.at(-1) || defaultValue
+    const currentIsAction = isNaN(parseFloat(currentValue))
 
-  const handleAddAction = (action: string) => {
-    if (action === "-" && expression[expression.length - 1] === "-") return
-    if ((action === "." && current.includes(".")) || isNaN(parseFloat(current)))
+    evaluated && setEvaluated(false)
+
+    if (isNumber) {
+      if (currentIsAction) {
+        setExpression([...copy, digit])
+        return
+      }
+
+      copy[copy.length - 1] =
+        currentValue === "0" ? digit : currentValue + digit
+      setExpression(copy)
       return
+    }
 
-    setExpression([...expression, current, action])
-    setCurrent(action)
-    setCurrentyyyyyy
+    if (actions.includes(digit)) {
+      digit = digit === "x" ? "*" : digit
+      const needsReplacing =
+        (currentIsAction && digit !== "-") ||
+        (digit === "-" && currentValue === "-" && copy.at(-2) === "-")
+
+      if (needsReplacing) {
+        const prevValue = copy
+          .slice()
+          .reverse()
+          .findIndex((v) => !isNaN(parseFloat(v)))
+        setExpression([...copy.slice(0, -prevValue), digit])
+        return
+      }
+
+      setExpression([...copy, digit])
+      return
+    }
+
+    if (digit === ".") {
+      copy[copy.length - 1] = currentValue.includes(digit)
+        ? currentValue
+        : currentValue + digit
+      setExpression(copy)
+      return
+    }
   }
 
   const handleEvaluate = () => {
-    if (expression[expression.length - 1] !== current)
-      setExpression([...expression, current])
-    const result = math.evaluate(expression.join("")).toString()
-    setCurrent(result)
-    setExpression([...expression, "=", result])
+    const result = math.evaluate(expression.join(""))
+    setEvaluated(true)
+    setExpression([...expression, "=", result.toString()])
   }
 
   return (
     <Paper elevation={3}>
-      <Container maxWidth="md" sx={{ padding: "5vh" }}>
-        <Display current={current} expression={expression} />
+      <Container maxWidth="md" sx={{ padding: "3vh" }}>
+        <Display current={expression.at(-1) || ""} expression={expression} />
         <Buttons
-          onNumberChange={handleAddDigit}
+          onDigitChange={handleAddDigit}
           onClear={clear}
-          onAddAction={handleAddAction}
           onEqual={handleEvaluate}
         />
       </Container>
