@@ -1,4 +1,4 @@
-import { Paper } from "@mui/material"
+import { Link, Paper } from "@mui/material"
 import { Container } from "@mui/system"
 import * as math from "mathjs"
 import { useState } from "react"
@@ -87,6 +87,9 @@ const Panel: React.FC = () => {
           onEqual={handleEvaluate}
         />
       </Container>
+      <Link target="_blank" href="https://github.com/potyoma/calculator">
+        @potyoma
+      </Link>
     </Paper>
   )
 }
