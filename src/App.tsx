@@ -1,4 +1,3 @@
-import "./App.css"
 import { Panel } from "./components/panel"
 
 const App = () => {

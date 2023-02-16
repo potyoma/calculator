@@ -1,4 +1,4 @@
-import { Button, Grid } from "@mui/material"
+import Button from "./button"
 
 type Props = {
   onAdd: (digit: string) => void
@@ -6,140 +6,41 @@ type Props = {
 
 const Numbers: React.FC<Props> = ({ onAdd }) => {
   return (
-    <Grid container spacing={2} columns={{ sm: 12 }}>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="seven"
-          onClick={() => onAdd("7")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          7
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="eight"
-          onClick={() => onAdd("8")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          8
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="nine"
-          onClick={() => onAdd("9")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          9
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="four"
-          onClick={() => onAdd("4")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          4
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="five"
-          onClick={() => onAdd("5")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          5
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="six"
-          onClick={() => onAdd("6")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          6
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="one"
-          onClick={() => onAdd("1")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          1
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="two"
-          onClick={() => onAdd("2")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          2
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="three"
-          onClick={() => onAdd("3")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          3
-        </Button>
-      </Grid>
-      <Grid item sm={8}>
-        <Button
-          color="primary"
-          id="zero"
-          onClick={() => onAdd("0")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          0
-        </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="primary"
-          id="decimal"
-          onClick={() => onAdd(".")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
-          .
-        </Button>
-      </Grid>
-    </Grid>
+    <div className="grid grid-rows-3 grid-cols-3 gap-3">
+      <div>
+        <Button onClick={() => onAdd("7")}>7</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd("8")}>8</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd("9")}>9</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd("4")}>4</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd("5")}>5</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd("6")}>6</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd("1")}>1</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd("2")}>2</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd("3")}>3</Button>
+      </div>
+      <div className="col-span-2">
+        <Button onClick={() => onAdd("0")}>0</Button>
+      </div>
+      <div>
+        <Button onClick={() => onAdd(".")}>.</Button>
+      </div>
+    </div>
   )
 }
 

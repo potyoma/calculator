@@ -1,5 +1,3 @@
-import { Link, Paper } from "@mui/material"
-import { Container } from "@mui/system"
 import * as math from "mathjs"
 import { useState } from "react"
 import { Buttons } from "./buttons"
@@ -53,7 +51,7 @@ const Panel: React.FC = () => {
         const prevValue = copy
           .slice()
           .reverse()
-          .findIndex((v) => !isNaN(parseFloat(v)))
+          .findIndex(v => !isNaN(parseFloat(v)))
         setExpression([...copy.slice(0, -prevValue), digit])
         return
       }
@@ -78,19 +76,25 @@ const Panel: React.FC = () => {
   }
 
   return (
-    <Paper elevation={3}>
-      <Container maxWidth="md" sx={{ padding: "3vh" }}>
+    <div className="h-screen flex justify-center items-center">
+      <div className="flex flex-col gap-3 bg-slate-300 rounded-lg p-4">
         <Display current={expression.at(-1) || ""} expression={expression} />
         <Buttons
           onDigitChange={handleAddDigit}
           onClear={clear}
           onEqual={handleEvaluate}
         />
-      </Container>
-      <Link target="_blank" href="https://github.com/potyoma/calculator">
-        @potyoma
-      </Link>
-    </Paper>
+        <div className="flex justify-center items-bottom row-span-1">
+          <a
+            className="inline-block text-lg font-bold text-blue-700"
+            target="_blank"
+            href="https://github.com/potyoma/calculator"
+          >
+            @potyoma
+          </a>
+        </div>
+      </div>
+    </div>
   )
 }
 

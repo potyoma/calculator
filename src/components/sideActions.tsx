@@ -1,4 +1,4 @@
-import { Button, Grid } from "@mui/material"
+import Button from "./button"
 
 type Props = {
   onAdd: (sign: string) => void
@@ -7,66 +7,28 @@ type Props = {
 
 const SideActions: React.FC<Props> = ({ onAdd, onEqual }) => {
   return (
-    <Grid
-      container
-      direction="column"
-      justifyContent="center"
-      spacing={2}
-      ml={1}
-      columns={{ sm: 12 }}
-    >
-      <Grid item>
-        <Button
-          color="info"
-          id="multiply"
-          onClick={() => onAdd("x")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
+    <div className="grid grid-cols-1 grid-rows-5 gap-3">
+      <div>
+        <Button color="bg-blue-400" onClick={() => onAdd("x")}>
           x
         </Button>
-      </Grid>
-      <Grid item>
-        <Button
-          color="info"
-          id="subtract"
-          onClick={() => onAdd("-")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
+      </div>
+      <div>
+        <Button color="bg-blue-400" onClick={() => onAdd("-")}>
           -
         </Button>
-      </Grid>
-      <Grid item>
-        <Button
-          color="info"
-          id="add"
-          onClick={() => onAdd("+")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
+      </div>
+      <div>
+        <Button color="bg-blue-400" onClick={() => onAdd("+")}>
           +
         </Button>
-      </Grid>
-      <Grid item>
-        <Button
-          color="secondary"
-          id="equals"
-          onClick={() => onEqual()}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-          sx={{
-            height: "10vh",
-          }}
-        >
+      </div>
+      <div className="row-span-2">
+        <Button color="bg-purple-500" onClick={() => onEqual()}>
           =
         </Button>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   )
 }
 

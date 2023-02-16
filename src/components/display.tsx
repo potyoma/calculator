@@ -1,5 +1,3 @@
-import { Box, Grid } from "@mui/material"
-
 type Props = {
   current: string
   expression: string[]
@@ -7,16 +5,16 @@ type Props = {
 
 const Display: React.FC<Props> = ({ current, expression }) => {
   return (
-    <Grid container direction="column" mb={3} spacing={3}>
-      <Grid item>
-        <Box sx={{ fontSize: "4vh" }}>{expression.join("")}</Box>
-      </Grid>
-      <Grid item>
-        <Box id="display" sx={{ fontSize: "4vh" }}>
+    <div className="flex flex-col justify-center items-center rounded-md bg-slate-200">
+      <div>
+        <span className="text-3xl">{expression.join("")}</span>
+      </div>
+      <div>
+        <span className="text-3xl" id="display">
           {current}
-        </Box>
-      </Grid>
-    </Grid>
+        </span>
+      </div>
+    </div>
   )
 }
 

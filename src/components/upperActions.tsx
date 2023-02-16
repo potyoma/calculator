@@ -1,4 +1,4 @@
-import { Button, Grid } from "@mui/material"
+import Button from "./button"
 
 type Props = {
   onAdd: (action: string) => void
@@ -7,32 +7,18 @@ type Props = {
 
 const UpperActions: React.FC<Props> = ({ onClear, onAdd }) => {
   return (
-    <Grid container marginBottom={2} spacing={2} columns={{ sm: 12 }}>
-      <Grid item sm={8}>
-        <Button
-          color="error"
-          id="clear"
-          onClick={() => onClear()}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
+    <div className="grid grid-cols-3 gap-3">
+      <div className="col-span-2">
+        <Button color="bg-red-600" onClick={() => onClear()}>
           AC
         </Button>
-      </Grid>
-      <Grid item sm={4}>
-        <Button
-          color="info"
-          id="divide"
-          onClick={() => onAdd("/")}
-          size="large"
-          variant="contained"
-          fullWidth={true}
-        >
+      </div>
+      <div>
+        <Button color="bg-blue-400" onClick={() => onAdd("/")}>
           /
         </Button>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   )
 }
 
